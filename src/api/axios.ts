@@ -8,30 +8,30 @@ export const instance = axios.create({
   },
 });
 
-// // 응답 인터셉터
-// instance.interceptors.response.use(
-//   (response) => {
-//     return response;
-//   },
-//   (error) => {
-//     if (400 <= error.response.status) {
-//       // 에러 코드 메세지 반환
-//       if (
-//         error.response.data.message === undefined ||
-//         error.response.data.message === null
-//       ) {
-//         alert(
-//           '불러오기에 에러 발생했습니다 : ' +
-//             error.response.data.error +
-//             ' : ' +
-//             error.response.data.status,
-//         );
-//       } else {
-//         alert(error.response.data.message);
-//       }
-//     }
-//     return Promise.reject(error);
-//   },
-// );
+// 응답 인터셉터
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (400 <= error.response.status) {
+      // 에러 코드 메세지 반환
+      if (
+        error.response.data.message === undefined ||
+        error.response.data.message === null
+      ) {
+        alert(
+          "불러오기에 에러 발생했습니다 : " +
+            error.response.data.error +
+            " : " +
+            error.response.data.status
+        );
+      } else {
+        alert(error.response.data.message);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 // 헤더에 토큰을 담는 instance
