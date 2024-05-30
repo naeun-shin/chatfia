@@ -19,13 +19,7 @@ const LastTextImage: React.FC<TextImageProps> = ({ title, text, image }) => {
           </Button>
         </div>
       </div>
-      <Image
-        src={image}
-        alt="마피아게임"
-        width={300}
-        height={300}
-        style={{ width: 300, height: 300 }}
-      />
+      <Image src={image} alt="마피아게임" width={300} height={300} />
     </div>
   );
 };

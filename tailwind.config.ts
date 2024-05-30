@@ -17,6 +17,13 @@ const config = {
       },
     },
     extend: {
+      writeingMode: {
+        horizontail: "horizontal-tb",
+        vertical: "vertical-rl",
+      },
+      transitionDuration: {
+        "5000": "5000ms",
+      },
       colors: {
         custom: "var(--custom)",
         border: "var(--border)",
@@ -67,10 +74,20 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        colorChangeRed: {
+          "0%, 100%": { color: "#F87171" },
+          "50%": { color: "white" },
+        },
+        colorChangeGreen: {
+          "0%, 100%": { color: "#34D399" },
+          "50%": { color: "white" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        colorChangeRed: "colorChangeRed 3s infinite",
+        colorChangeGreen: "colorChangeGreen 3s infinite",
       },
     },
   },

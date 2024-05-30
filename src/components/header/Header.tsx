@@ -15,7 +15,6 @@ export default function Header() {
               alt="chatfia"
               width={130}
               height={50}
-              style={{ width: 130, height: 50 }}
             />
           </div>
         </Link>

@@ -14,7 +14,6 @@ const TextImage: React.FC<TextImageProps> = ({ title, text, image }) => {
         alt="마피아게임"
         width={600}
         height={300}
-        style={{ width: 600, height: 300 }}
         priority={true}
       />
     </div>
