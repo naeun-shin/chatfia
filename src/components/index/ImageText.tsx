@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const TextImage: React.FC<ImageTextProps> = ({ title, text, image }) => {
   return (
-    <div className="flex items-center justify-center pt-20 pb-20 space-x-32">
+    <div className="flex items-center justify-center font-bold pt-20 pb-20 space-x-32">
       <Image
         src={image}
         alt="마피아게임"
@@ -15,7 +15,7 @@ const TextImage: React.FC<ImageTextProps> = ({ title, text, image }) => {
       />
       <div>
         <div className="mb-4 text-4xl">{title}</div>
-        <div className="text-l">{text}</div>
+        <div className="text-lg">{text}</div>
       </div>
     </div>
   );

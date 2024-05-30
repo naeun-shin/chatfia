@@ -3,8 +3,9 @@ import Header from "@/components/header/Header";
 import TextImage from "@/components/index/TextImage";
 import ImageText from "@/components/index/ImageText";
 import LastTextImage from "@/components/index/LastTextImage";
+import KeyFeatures from "@/components/index/KeyFeatures";
 
-export default function Home() {
+export default function Index() {
   return (
     <div>
       <Header />
@@ -40,6 +41,7 @@ export default function Home() {
         image="/imgs/index-5.png"
         isTextLeft={true}
       />
+      <KeyFeatures />
     </div>
   );
 }

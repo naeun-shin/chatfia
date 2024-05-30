@@ -4,10 +4,10 @@ import Image from "next/image";
 
 const TextImage: React.FC<TextImageProps> = ({ title, text, image }) => {
   return (
-    <div className="flex items-center justify-center pt-20 pb-20 space-x-32">
+    <div className="flex items-center justify-center font-bold pt-20 pb-20 space-x-32">
       <div>
         <div className="mb-4 text-4xl">{title}</div>
-        <div className="text-l">{text}</div>
+        <div className="text-lg">{text}</div>
       </div>
       <Image
         src={image}
