@@ -84,11 +84,11 @@ export default function Auth() {
   return (
     <div>
       <HeaderWithoutLoginButton />
-      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 overflow-y-auto">
-        <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+      <div className="fixed left-0 top-0 h-full w-full overflow-y-auto bg-black bg-opacity-60">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Card
             className={cn(
-              "w-[500px] h-[750px] px-4 flex flex-col justify-center"
+              "flex h-[750px] w-[500px] flex-col justify-center px-4",
             )}
           >
             <motion.div
@@ -126,7 +126,7 @@ export default function Auth() {
                   <form
                     onSubmit={loginForm.handleSubmit(onLoginSubmit)}
                     className="relative space-y-3 overflow-x-hidden"
-                    method="post"
+                    method="POST"
                   >
                     <FormField
                       control={loginForm.control}
@@ -154,7 +154,7 @@ export default function Auth() {
                         </FormItem>
                       )}
                     />
-                    <div className={cn("flex justify-center pt-8 gap-4")}>
+                    <div className={cn("flex justify-center gap-4 pt-8")}>
                       <Button
                         type="button"
                         variant="ghost"
@@ -186,11 +186,11 @@ export default function Auth() {
             </motion.div>
             <motion.div
               className={cn(
-                "space-y-3 absolute flex flex-col justify-center left-0 right-0",
+                "absolute left-0 right-0 flex flex-col justify-center space-y-3",
                 {
                   "opacity-100 transition-opacity duration-100": step === 1,
                   "opacity-0 transition-opacity duration-100": step !== 1,
-                }
+                },
               )}
               animate={{ translateX: `${(1 - step) * 100}%` }}
               style={{ translateX: `${(1 - step) * 100}%` }}
@@ -227,7 +227,7 @@ export default function Auth() {
                   <form
                     onSubmit={signUpForm.handleSubmit(onSignUpSubmit)}
                     className="relative space-y-3 overflow-x-hidden"
-                    method="post"
+                    method="POST"
                   >
                     <FormField
                       control={signUpForm.control}
@@ -284,7 +284,7 @@ export default function Auth() {
                         </FormItem>
                       )}
                     />
-                    <div className={cn("flex justify-center pt-4 gap-2")}>
+                    <div className={cn("flex justify-center gap-2 pt-4")}>
                       <Button
                         type="button"
                         variant="ghost"
