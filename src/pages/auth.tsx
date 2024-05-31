@@ -26,7 +26,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, signUpSchema } from "@/validators/auth";
 import { z } from "zod";
 import { useState } from "react";
-import HeaderWithoutLoginButton from "@/components/header/HeaderWithoutLoginButton";
 import { useSignUp } from "@/hooks/useSignUp";
 import { useLogin } from "@/hooks/useLogin";
 
@@ -83,7 +82,6 @@ export default function Auth() {
 
   return (
     <div>
-      <HeaderWithoutLoginButton />
       <div className="fixed left-0 top-0 h-full w-full overflow-y-auto bg-black bg-opacity-60">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Card
