@@ -1,7 +1,7 @@
+import React from "react";
+import Link from "next/link";
 import { CircleUserRound } from "lucide-react";
 import { DoorOpen } from "lucide-react";
-import Link from "next/link";
-import React from "react";
 
 export default function HeaderIcons() {
   return (

@@ -1,0 +1,84 @@
+import React from "react";
+import Image from "next/image";
+import { RoleCardProps } from "@/types/interfaces/ruleInterface";
+
+const RoleCard: React.FC<RoleCardProps> = ({
+  image,
+  alt,
+  title,
+  subtitle,
+  description,
+  alignment,
+}) => {
+  const alignmentStyle = {
+    left: "justify-start",
+    center: "justify-center",
+    right: "justify-end",
+  };
+
+  const textAlignmentStyle = alignment === "right" ? "text-right" : "";
+
+  return (
+    <div
+      className={`flex items-center ${alignmentStyle[alignment]} mx-auto w-3/5 space-x-20 py-20`}
+    >
+      {alignment === "right" ? (
+        <>
+          <div className={textAlignmentStyle}>
+            <div className="flex items-end justify-end space-x-2">
+              <p className="flex text-3xl font-bold">{title}</p>
+              <p className={"font-bold"}>{subtitle}</p>
+            </div>
+            <div className="flex flex-col">
+              {description.map((text, index) => (
+                <p
+                  key={index}
+                  className={
+                    index === 0
+                      ? `mb-8 mt-2 font-bold ${textAlignmentStyle}`
+                      : `mb-2 ${textAlignmentStyle}`
+                  }
+                >
+                  {text}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div>
+            <Image src={image} alt={alt} width={200} height={320} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div>
+            <Image src={image} alt={alt} width={200} height={320} />
+          </div>
+          <div className={textAlignmentStyle}>
+            <div className="flex items-end space-x-2">
+              <p className={`text-3xl font-bold ${textAlignmentStyle}`}>
+                {title}
+              </p>
+              <p className={`font-bold ${textAlignmentStyle}`}>{subtitle}</p>
+            </div>
+            <div className="flex flex-col">
+              {description.map((text, index) => (
+                <p
+                  key={index}
+                  className={
+                    index === 0
+                      ? `mb-8 mt-2 font-bold ${textAlignmentStyle}`
+                      : `mb-2 ${textAlignmentStyle}`
+                  }
+                >
+                  {text}
+                </p>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default RoleCard;

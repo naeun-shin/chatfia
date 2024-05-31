@@ -1,3 +1,6 @@
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -24,9 +27,6 @@ import { loginSchema, signUpSchema } from "@/validators/auth";
 import { z } from "zod";
 import { useState } from "react";
 import HeaderWithoutLoginButton from "@/components/header/HeaderWithoutLoginButton";
-import Link from "next/link";
-import Image from "next/image";
-import React from "react";
 import { useSignUp } from "@/hooks/useSignUp";
 import { useLogin } from "@/hooks/useLogin";
 
@@ -126,6 +126,7 @@ export default function Auth() {
                   <form
                     onSubmit={loginForm.handleSubmit(onLoginSubmit)}
                     className="relative space-y-3 overflow-x-hidden"
+                    method="post"
                   >
                     <FormField
                       control={loginForm.control}
@@ -226,6 +227,7 @@ export default function Auth() {
                   <form
                     onSubmit={signUpForm.handleSubmit(onSignUpSubmit)}
                     className="relative space-y-3 overflow-x-hidden"
+                    method="post"
                   >
                     <FormField
                       control={signUpForm.control}

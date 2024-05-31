@@ -1,8 +1,8 @@
-import { TextImageProps } from "@/types/interfaces/indexInterface";
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { TextImageProps } from "@/types/interfaces/indexInterface";
 
 const LastTextImage: React.FC<TextImageProps> = ({ title, text, image }) => {
   return (

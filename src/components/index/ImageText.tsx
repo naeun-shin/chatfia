@@ -1,6 +1,6 @@
-import { ImageTextProps } from "@/types/interfaces/indexInterface";
 import React from "react";
 import Image from "next/image";
+import { ImageTextProps } from "@/types/interfaces/indexInterface";
 
 const TextImage: React.FC<ImageTextProps> = ({ title, text, image }) => {
   return (
