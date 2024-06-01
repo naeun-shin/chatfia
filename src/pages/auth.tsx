@@ -124,7 +124,7 @@ export default function Auth() {
                   <form
                     onSubmit={loginForm.handleSubmit(onLoginSubmit)}
                     className="relative space-y-3 overflow-x-hidden"
-                    method="POST"
+                    method="GET"
                   >
                     <FormField
                       control={loginForm.control}
@@ -225,7 +225,7 @@ export default function Auth() {
                   <form
                     onSubmit={signUpForm.handleSubmit(onSignUpSubmit)}
                     className="relative space-y-3 overflow-x-hidden"
-                    method="POST"
+                    method="GET"
                   >
                     <FormField
                       control={signUpForm.control}
