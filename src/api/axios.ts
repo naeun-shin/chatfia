@@ -2,8 +2,7 @@ import axios from "axios";
 
 // token이 없는 경우의 instance => 로그인 및 회원가입 API 연결 시도 때 사용하는 instance
 export const instance = axios.create({
-  // baseURL: process.env.NEXT_PUBLIC_API_URL,
-  baseURL: "https://api.chatfia.online",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
