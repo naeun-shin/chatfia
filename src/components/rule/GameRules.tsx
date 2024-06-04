@@ -15,21 +15,21 @@ const GameRules: React.FC = () => {
 
   return (
     <div>
-      <div className="flex items-end justify-center mt-20 mb-20 space-x-2">
+      <div className="mb-20 mt-20 flex items-end justify-center space-x-2">
         <p className="text-4xl font-bold">게임 룰</p>
         <p className="font-bold">Game rule</p>
       </div>
       <TopHoverCard />
-      <div className="w-4/5 mx-auto">
+      <div className="mx-auto w-4/5">
         <ProgressBar value={progress} checkpoints={checkpoints} />
       </div>
       <BottomHoverCard />
-      <div className="flex-col mt-60 mb-20">
-        <div className="flex items-end justify-center mb-8 space-x-2">
+      <div className="mb-20 mt-60 flex-col">
+        <div className="mb-8 flex items-end justify-center space-x-2">
           <p className="text-4xl font-bold">승리 조건</p>
           <p className="font-bold">Victory conditions</p>
         </div>
-        <div className="flex flex-col items-center justify-center text-xl space-y-4">
+        <div className="flex flex-col items-center justify-center space-y-4 text-xl">
           <p className="animate-colorChangeRed">
             마피아팀 : 마피아의 수가 시민과 같거나 더 많으면 승리
           </p>

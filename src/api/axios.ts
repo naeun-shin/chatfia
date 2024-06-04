@@ -21,7 +21,7 @@ instance.interceptors.response.use(
         error.response.data.message === null
       ) {
         alert(
-          "불러오기에 에러 발생했습니다 : " +
+          "에러 발생 : " +
             error.response.data.error +
             " : " +
             error.response.data.status,
