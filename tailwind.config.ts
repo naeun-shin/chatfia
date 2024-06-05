@@ -82,12 +82,17 @@ const config = {
           "0%, 100%": { color: "#34D399" },
           "50%": { color: "white" },
         },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         colorChangeRed: "colorChangeRed 3s infinite",
         colorChangeGreen: "colorChangeGreen 3s infinite",
+        fadeIn: "fadeIn 300ms ease-in-out",
       },
     },
   },
