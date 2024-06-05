@@ -6,3 +6,13 @@ export interface GameRoomProps {
   private: boolean;
   password?: string;
 }
+
+export interface GameRoomDialogProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  onCreateRoom: (
+    roomTitle: string,
+    isPrivate: boolean,
+    password: string,
+  ) => void;
+}
