@@ -1,22 +1,14 @@
-import { api } from "@/api/authApi";
+import { authApi } from "@/api/authApi";
 import { useMutation } from "@tanstack/react-query";
 import { SignUpResponse } from "@/types/interfaces/authInterface";
 
 // 회원가입 프로세스를 처리하기 위한 사용자 정의 훅
 export const useSignUp = () => {
-  // useMutation 훅을 사용하여 비동기 데이터 변경 작업을 설정
   return useMutation({
-    // mutationFn: 비동기 요청을 수행할 함수를 지정. 여기서는 api 객체의 signup 함수를 사용함
-    mutationFn: api.signup,
-
-    // onSuccess: 이 콜백 함수는 api.signup 함수 호출이 성공적으로 완료되었을 때 실행됨
-    // 데이터 처리가 성공적으로 완료되면, 응답 데이터를 콘솔에 출력함
+    mutationFn: authApi.signup,
     onSuccess: (data: SignUpResponse) => {
       console.log(data);
     },
-
-    // onError: 이 콜백 함수는 api.signup 함수 호출이 실패했을 때 실행됨
-    // 에러가 발생하면, 에러 객체를 콘솔에 출력함
     onError: (error: Error) => {
       console.log(error);
     },

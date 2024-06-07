@@ -5,8 +5,8 @@ import {
   LoginType,
 } from "@/types/interfaces/authInterface";
 
-export const api = {
-  /* 회원가입 */
+export const authApi = {
+  // 회원가입
   signup: async (signUpUserData: SignUpType): Promise<SignUpResponse> => {
     const response = await instance.post<SignUpResponse>(
       "/auth/signup",
@@ -15,7 +15,7 @@ export const api = {
     return response.data;
   },
 
-  /* 로그인 */
+  // 로그인
   login: async (loginUserData: LoginType) => {
     const response = await instance.post("/auth/login", loginUserData);
     return response.data;
