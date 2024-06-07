@@ -3,8 +3,7 @@ import Header from "@/components/header/Header";
 import GameRoom from "@/components/lobby/GameRoom";
 import { GameRoomProps } from "@/types/interfaces/lobbyInterface";
 import GameRoomDialog from "@/components/lobby/GameRoomDialog";
-import { Command } from "@/components/ui/command";
-import { Search } from "lucide-react";
+import GameRoomCommmand from "@/components/lobby/GameRoomCommand";
 
 export default function Lobby() {
   const [rooms, setRooms] = useState<GameRoomProps[]>([]);
@@ -48,20 +47,10 @@ export default function Lobby() {
           />
         </div>
       </div>
-      <div className="mx-auto mb-20 w-1/3">
-        <Command>
-          <div className="flex items-center border-b px-3">
-            <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-            <input
-              type="text"
-              placeholder="방 검색"
-              value={searchInput}
-              onChange={handleSearchInputChange}
-              className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-            />
-          </div>
-        </Command>
-      </div>
+      <GameRoomCommmand
+        searchInput={searchInput}
+        handleSearchInputChange={handleSearchInputChange}
+      />
       <div className="mb-20">
         <div className="mx-auto grid max-w-fit grid-cols-5">
           {filteredRooms.map((room, index) => (

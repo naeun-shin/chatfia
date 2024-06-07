@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 /* lobby 페이지 props 타입 */
 export interface GameRoomProps {
   image: "red" | "black";
@@ -15,4 +17,9 @@ export interface GameRoomDialogProps {
     isPrivate: boolean,
     password: string,
   ) => void;
+}
+
+export interface GameRoomCommandProps {
+  searchInput: string;
+  handleSearchInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
