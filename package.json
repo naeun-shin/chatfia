@@ -29,13 +29,15 @@
     "next": "^14.2.3",
     "progress": "^2.0.3",
     "react": "18.2.0",
+    "react-cookie": "^7.1.4",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.51.2",
     "shadcn-ui": "^0.8.0",
     "sharp": "^0.33.4",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
