@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -25,7 +25,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, signUpSchema } from "@/validators/auth";
 import { z } from "zod";
-import { useState } from "react";
 import { useSignUp } from "@/hooks/useSignUp";
 import { useLogin } from "@/hooks/useLogin";
 
