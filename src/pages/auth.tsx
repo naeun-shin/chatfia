@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   Card,
   CardContent,
@@ -32,6 +33,7 @@ type LoginInput = z.infer<typeof loginSchema>;
 type SignUpInput = z.infer<typeof signUpSchema>;
 
 export default function Auth() {
+  const router = useRouter();
   const [step, setStep] = useState<number>(0);
 
   const { toast } = useToast();
@@ -59,6 +61,7 @@ export default function Auth() {
   const loginMutation = useLogin();
 
   function onLoginSubmit(data: LoginInput) {
+    console.log("로그인: ", data); // 폼 제출 시 출력
     loginMutation.mutate(data);
   }
 
@@ -78,6 +81,28 @@ export default function Auth() {
 
     signUpMutation.mutate(data);
   }
+
+  useEffect(() => {
+    if (loginMutation.isSuccess) {
+      toast({
+        title: "로그인에 성공했습니다. 즐거운 시간 되세요!",
+        variant: "success",
+        duration: 3000,
+      });
+      router.push("/");
+    }
+  }, [loginMutation.isSuccess, router, toast]);
+
+  useEffect(() => {
+    if (signUpMutation.isSuccess) {
+      toast({
+        title: "회원가입에 성공했습니다.",
+        variant: "success",
+        duration: 3000,
+      });
+      setStep(0);
+    }
+  }, [signUpMutation.isSuccess, toast]);
 
   return (
     <div>

@@ -1,6 +1,6 @@
+import { useRouter } from "next/router";
 import { authApi } from "@/api/authApi";
 import { commonApi } from "@/api/commonApi";
-import { useRouter } from "next/router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useUserStore from "@/stores/useUserStore";
 
@@ -16,8 +16,8 @@ export const useLogin = () => {
       try {
         // 사용자 정보를 가져오는 쿼리
         const data = await queryClient.fetchQuery({
-          queryKey: ["getuserInfo"], // queryKey : 캐싱 또는 stale타임을 적용하기 위한 함수 이름
-          queryFn: commonApi.getUserInfo, // queryFn : 실제 API 호출하는 함수 이름
+          queryKey: ["getuserInfo"],
+          queryFn: commonApi.getUserInfo,
         });
 
         login(data);

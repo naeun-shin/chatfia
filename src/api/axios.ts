@@ -24,22 +24,34 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (400 <= error.response.status) {
-      // 에러 코드 메세지 반환
-      if (
-        error.response.data.message === undefined ||
-        error.response.data.message === null
-      ) {
-        alert(
-          "에러 발생 : " +
-            error.response.data.error +
-            " : " +
-            error.response.data.status,
-        );
+    const { response } = error;
+
+    if (response) {
+      const { status, data } = response;
+      let errorMessage = "오류가 발생했습니다";
+
+      if (data && data.message) {
+        errorMessage = data.message;
+      } else if (data && data.error) {
+        errorMessage = `${data.error} (상태 코드: ${status})`;
       } else {
-        alert(error.response.data.message);
+        errorMessage = `상태 코드 ${status}`;
       }
+
+      // 4xx 에러
+      if (status >= 400 && status < 500) {
+        alert(`클라이언트 오류: ${errorMessage}`);
+      }
+      // 5xx 에러
+      else if (status >= 500) {
+        alert(`서버 오류: ${errorMessage}`);
+      } else {
+        alert(errorMessage);
+      }
+    } else {
+      alert("네트워크 오류가 발생했습니다");
     }
+
     return Promise.reject(error);
   },
 );
@@ -57,7 +69,7 @@ instanceWithToken.interceptors.request.use(
   (config) => {
     const token = getStorage("accessToken");
     if (token) {
-      config.headers.Authorization = token;
+      config.headers.Authorization = token; // 필요할 경우 `Bearer ${token}`
     }
     return config;
   },
