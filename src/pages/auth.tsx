@@ -61,13 +61,14 @@ export default function Auth() {
   const loginMutation = useLogin();
 
   function onLoginSubmit(data: LoginInput) {
-    console.log("로그인: ", data); // 폼 제출 시 출력
+    console.log("로그인: ", data);
     loginMutation.mutate(data);
   }
 
   const signUpMutation = useSignUp();
 
   function onSignUpSubmit(data: SignUpInput) {
+    console.log("회원가입: ", data);
     const { password, confirmPassword } = data;
 
     if (password !== confirmPassword) {
@@ -90,8 +91,30 @@ export default function Auth() {
         duration: 3000,
       });
       router.push("/");
+    } else if (loginMutation.isError) {
+      let title = "로그인에 실패했습니다.";
+      let errorDescription = "";
+      if (loginMutation.error.message.includes("아이디가 잘못되었습니다.")) {
+        errorDescription = "아이디가 잘못되었습니다.";
+      } else if (
+        loginMutation.error.message.includes("비밀번호가 잘못되었습니다.")
+      ) {
+        errorDescription = "비밀번호가 잘못되었습니다.";
+      }
+      toast({
+        title,
+        description: errorDescription,
+        variant: "destructive",
+        duration: 3000,
+      });
     }
-  }, [loginMutation.isSuccess, router, toast]);
+  }, [
+    loginMutation.isSuccess,
+    loginMutation.isError,
+    loginMutation.error,
+    router,
+    toast,
+  ]);
 
   useEffect(() => {
     if (signUpMutation.isSuccess) {
@@ -101,8 +124,20 @@ export default function Auth() {
         duration: 3000,
       });
       setStep(0);
+    } else if (signUpMutation.isError) {
+      toast({
+        title: "회원가입에 실패했습니다.",
+        description: signUpMutation.error.message,
+        variant: "destructive",
+        duration: 3000,
+      });
     }
-  }, [signUpMutation.isSuccess, toast]);
+  }, [
+    signUpMutation.isSuccess,
+    signUpMutation.isError,
+    signUpMutation.error,
+    toast,
+  ]);
 
   return (
     <div>

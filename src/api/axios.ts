@@ -40,16 +40,16 @@ instance.interceptors.response.use(
 
       // 4xx 에러
       if (status >= 400 && status < 500) {
-        alert(`클라이언트 오류: ${errorMessage}`);
+        console.log(`클라이언트 오류: ${errorMessage}`);
       }
       // 5xx 에러
       else if (status >= 500) {
-        alert(`서버 오류: ${errorMessage}`);
+        console.log(`서버 오류: ${errorMessage}`);
       } else {
-        alert(errorMessage);
+        console.log(errorMessage);
       }
     } else {
-      alert("네트워크 오류가 발생했습니다");
+      console.log("네트워크 오류가 발생했습니다");
     }
 
     return Promise.reject(error);
