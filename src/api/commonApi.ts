@@ -1,17 +1,11 @@
-import { GetUserInfoResponse } from "@/types/interfaces/commonInterface";
 import { instanceWithToken } from "./axios";
+import { UserInfoResponse } from "@/types/interfaces/commonInterface";
 
 export const commonApi = {
   // 회원정보 조회
-  getUserInfo: async (): Promise<GetUserInfoResponse> => {
+  getUserInfo: async (): Promise<UserInfoResponse> => {
     const response =
-      await instanceWithToken.get<GetUserInfoResponse>("/auth/info");
-    return response.data;
-  },
-
-  // 회원탈퇴
-  deleteUserInfo: async () => {
-    const response = await instanceWithToken.delete("/auth/info");
+      await instanceWithToken.get<UserInfoResponse>("/auth/info");
     return response.data;
   },
 };
