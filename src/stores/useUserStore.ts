@@ -1,17 +1,17 @@
 import { create } from "zustand";
-import { GetUserInfoResponse } from "@/types/interfaces/commonInterface";
+import { UserInfoResponse } from "@/types/interfaces/commonInterface";
 
 interface UserState {
-  user: GetUserInfoResponse | null;
+  user: UserInfoResponse | null;
   isLoggedIn: boolean;
-  login: (userData: GetUserInfoResponse) => void;
+  login: (userData: UserInfoResponse) => void;
   logout: () => void;
 }
 
 const useUserStore = create<UserState>((set) => ({
   user: null,
   isLoggedIn: false,
-  login: (userData: GetUserInfoResponse) =>
+  login: (userData: UserInfoResponse) =>
     set({ user: userData, isLoggedIn: true }),
   logout: () => set({ user: null, isLoggedIn: false }),
 }));
