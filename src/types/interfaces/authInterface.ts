@@ -1,5 +1,5 @@
 // 회원가입 시 입력 타입
-export interface SignUpType {
+export interface SignUpRequest {
   email: string;
   nickname: string;
   password: string;
@@ -15,18 +15,18 @@ export interface SignUpResponse {
 }
 
 // 로그인 시 입력 타입
-export interface LoginType {
+export interface LoginRequest {
   email: string;
   password: string;
 }
 
 // 이메일 인증 입력 타입
-export interface VerifyEmailType {
+export interface VerifyEmailRequest {
   email: string;
 }
 
 // 인증번호 입력 타입
-export interface VerifyCodeType {
+export interface VerifyCodeRequest {
   email: string;
   code: string;
 }

@@ -10,6 +10,10 @@ export default function Lobby() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
+  const filteredRooms = rooms.filter((room) =>
+    room.title.toLowerCase().includes(searchInput.toLowerCase()),
+  );
+
   const handleCreateRoom = (
     roomTitle: string,
     isPrivate: boolean,
@@ -21,6 +25,7 @@ export default function Lobby() {
       players: 1,
       private: isPrivate,
       password: isPrivate ? password : "",
+      registrationDate: new Date(),
     };
     setRooms((prevRooms) => [...prevRooms, newRoom]);
   };
@@ -28,10 +33,6 @@ export default function Lobby() {
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);
   };
-
-  const filteredRooms = rooms.filter((room) =>
-    room.title.toLowerCase().includes(searchInput.toLowerCase()),
-  );
 
   return (
     <>
@@ -52,9 +53,9 @@ export default function Lobby() {
         handleSearchInputChange={handleSearchInputChange}
       />
       <div className="mb-20">
-        <div className="mx-auto grid max-w-fit grid-cols-5">
+        <div className="mx-auto grid max-w-fit grid-cols-5 flex-col">
           {filteredRooms.map((room, index) => (
-            <div key={index} className="animate-fadeIn flex justify-center">
+            <div key={index} className="flex animate-fadeIn justify-center">
               <GameRoom
                 image={index % 2 === 0 ? "red" : "black"}
                 title={room.title}
