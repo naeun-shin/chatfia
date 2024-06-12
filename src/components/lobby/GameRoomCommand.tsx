@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Search } from "lucide-react";
-import { GameRoomCommandProps } from "@/types/interfaces/lobbyInterface";
+import {
+  GameRoomCommandProps,
+  RoomResponse,
+} from "@/types/interfaces/lobbyInterface";
+import { lobbyApi } from "@/api/lobbyApi";
 
 const GameRoomCommmand: React.FC<GameRoomCommandProps> = ({
   searchInput,
   handleSearchInputChange,
 }) => {
+  const [rooms, setRooms] = useState<RoomResponse[]>([]);
+
+  const handleSortByDate = async () => {
+    const response = await lobbyApi.getRoomByDate({ order: "desc" });
+    setRooms(response);
+  };
+
+  const handleSortByPlayerCount = async () => {
+    const response = await lobbyApi.getRoomsByPlayerCount({ order: "desc" });
+    setRooms(response);
+  };
+
   return (
     <div className="mx-auto mb-20 w-1/3 justify-center">
       <div className="flex items-center border-b px-3">
@@ -19,10 +35,16 @@ const GameRoomCommmand: React.FC<GameRoomCommandProps> = ({
         />
       </div>
       <div className="mt-4 flex justify-end space-x-4 text-sm">
-        <p className="cursor-pointer duration-300 hover:text-green-300">
+        <p
+          onClick={handleSortByDate}
+          className="cursor-pointer duration-300 hover:text-green-300"
+        >
           등록일순
         </p>
-        <p className="cursor-pointer duration-300 hover:text-green-300">
+        <p
+          onClick={handleSortByPlayerCount}
+          className="cursor-pointer duration-300 hover:text-green-300"
+        >
           참여인원순
         </p>
       </div>

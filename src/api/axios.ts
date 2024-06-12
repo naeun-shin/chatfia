@@ -69,7 +69,7 @@ instanceWithToken.interceptors.request.use(
   (config) => {
     const token = getStorage("accessToken");
     if (token) {
-      config.headers.Authorization = token; // 필요할 경우 `Bearer ${token}`
+      config.headers.Authorization = token;
     }
     return config;
   },

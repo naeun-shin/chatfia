@@ -30,7 +30,7 @@ export interface OrderRequest {
   order: "asc" | "desc";
 }
 
-// 검색, 등록일순, 참여인원순 조회 응답 타입
+// 등록일순, 참여인원순 조회 응답 타입
 export interface PlayerResponse {
   id: number;
   nickname: string;

@@ -30,8 +30,8 @@ export default function Lobby() {
     setRooms((prevRooms) => [...prevRooms, newRoom]);
   };
 
-  const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(event.target.value);
+  const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
   };
 
   return (
