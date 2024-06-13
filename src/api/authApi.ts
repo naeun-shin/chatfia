@@ -34,4 +34,22 @@ export const authApi = {
     const response = await instance.get("/mail", { params: verifyCodeData });
     return response.data;
   },
+
+  // 로그아웃
+  logout: async () => {
+    const response = await instance.post("/auth/logout");
+    return response.data;
+  },
+
+  // 토큰 갱신
+  refreshToken: async () => {
+    const response = await instance.post("/auth/refresh");
+    return response.data;
+  },
+
+  // 블랙리스트 리셋
+  blacklistReset: async () => {
+    const response = await instance.post("/auth/blacklist/reset");
+    return response.data;
+  },
 };

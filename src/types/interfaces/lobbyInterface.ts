@@ -25,21 +25,34 @@ export interface GameRoomCommandProps {
   handleSearchInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
+// 방 생성 요청 타입
+export interface RoomRequest {
+  name: string;
+  isPrivate: boolean;
+  password: string;
+}
+
 // 등록일순, 참여인원순 조회 요청 타입
 export interface OrderRequest {
   order: "asc" | "desc";
 }
 
-// 등록일순, 참여인원순 조회 응답 타입
-export interface PlayerResponse {
+// 방 생성, 등록일순, 참여인원순 조회 성공 응답 타입
+export interface Player {
   id: number;
   nickname: string;
 }
 
-export interface RoomResponse {
+export interface RoomResponseSuccess {
   id: number;
   name: string;
   hostId: number;
   isPrivate: boolean;
-  players: PlayerResponse[];
+  players: Player[];
+}
+
+// 방 생성, 등록일순, 참여인원순 조회 실패 응답 타입
+export interface RoomResponseFail {
+  status: "error";
+  message: string;
 }

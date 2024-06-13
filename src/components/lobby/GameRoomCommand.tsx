@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react";
-import {
-  GameRoomCommandProps,
-  RoomResponse,
-} from "@/types/interfaces/lobbyInterface";
-import { lobbyApi } from "@/api/lobbyApi";
+import { GameRoomCommandProps } from "@/types/interfaces/lobbyInterface";
+import { lobbyApi, RoomResponse } from "@/api/lobbyApi";
 
 const GameRoomCommmand: React.FC<GameRoomCommandProps> = ({
   searchInput,
@@ -14,12 +11,22 @@ const GameRoomCommmand: React.FC<GameRoomCommandProps> = ({
 
   const handleSortByDate = async () => {
     const response = await lobbyApi.getRoomByDate({ order: "desc" });
-    setRooms(response);
+    if (Array.isArray(response)) {
+      setRooms(response);
+    } else {
+      // Handle single object response (RoomResponse)
+      setRooms([response]);
+    }
   };
 
   const handleSortByPlayerCount = async () => {
     const response = await lobbyApi.getRoomsByPlayerCount({ order: "desc" });
-    setRooms(response);
+    if (Array.isArray(response)) {
+      setRooms(response);
+    } else {
+      // Handle single object response (RoomResponse)
+      setRooms([response]);
+    }
   };
 
   return (
