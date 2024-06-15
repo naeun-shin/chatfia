@@ -15,13 +15,19 @@ export const lobbyApi = {
       const response = await instanceWithToken.post("/room", data);
       return response.data;
     } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-        return { status: "error", message: error.message };
-      } else {
-        console.error("알 수 없는 오류 발생: ", error);
-        return { status: "error", message: "알 수 없는 오류 발생" };
-      }
+      console.error(error);
+      return { status: "error", message: "방 생성에 실패했습니다." };
+    }
+  },
+
+  // 모든 방 조회
+  getAllRooms: async (): Promise<RoomResponse[]> => {
+    try {
+      const response = await instanceWithToken.get("/room");
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return [{ status: "error", message: "방 조회에 실패했습니다." }];
     }
   },
 
@@ -36,13 +42,8 @@ export const lobbyApi = {
       );
       return response.data;
     } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-        return { status: "error", message: error.message };
-      } else {
-        console.error("알 수 없는 오류 발생: ", error);
-        return { status: "error", message: "알 수 없는 오류 발생" };
-      }
+      console.error(error);
+      return { status: "error", message: "등록일순 조회에 실패했습니다." };
     }
   },
 
@@ -57,13 +58,8 @@ export const lobbyApi = {
       );
       return response.data;
     } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-        return { status: "error", message: error.message };
-      } else {
-        console.error("알 수 없는 오류 발생: ", error);
-        return { status: "error", message: "알 수 없는 오류 발생" };
-      }
+      console.error(error);
+      return { status: "error", message: "참여인원순 조회에 실패했습니다." };
     }
   },
 };
