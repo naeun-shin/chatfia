@@ -1,33 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { GameRoomCommandProps } from "@/types/interfaces/lobbyInterface";
-import { lobbyApi, RoomResponse } from "@/api/lobbyApi";
+import { useLobby } from "@/hooks/useLobby";
 
 const GameRoomCommmand: React.FC<GameRoomCommandProps> = ({
   searchInput,
   handleSearchInputChange,
 }) => {
-  const [rooms, setRooms] = useState<RoomResponse[]>([]);
+  const [order, setOrder] = useState<"desc" | "asc">("desc");
+  const [sortType, setSortType] = useState<"date" | "playerCount">("date");
 
-  const handleSortByDate = async () => {
-    const response = await lobbyApi.getRoomByDate({ order: "desc" });
-    if (Array.isArray(response)) {
-      setRooms(response);
-    } else {
-      // Handle single object response (RoomResponse)
-      setRooms([response]);
+  const { data, error, isLoading } = useLobby({ order }, "rooms", sortType);
+
+  const handleSort = (e: React.MouseEvent<HTMLElement>) => {
+    const type = e.currentTarget.dataset.sortType;
+    console.log(
+      (e.target as HTMLElement).innerText + " 버튼이 클릭되었습니다.",
+    );
+    if (type === "date" || type === "playerCount") {
+      setSortType(type);
+      setOrder(order === "desc" ? "asc" : "desc");
     }
   };
 
-  const handleSortByPlayerCount = async () => {
-    const response = await lobbyApi.getRoomsByPlayerCount({ order: "desc" });
-    if (Array.isArray(response)) {
-      setRooms(response);
-    } else {
-      // Handle single object response (RoomResponse)
-      setRooms([response]);
-    }
-  };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading rooms: {error.message}</div>;
+  }
 
   return (
     <div className="mx-auto mb-20 w-1/3 justify-center">
@@ -42,18 +44,18 @@ const GameRoomCommmand: React.FC<GameRoomCommandProps> = ({
         />
       </div>
       <div className="mt-4 flex justify-end space-x-4 text-sm">
-        <p
-          onClick={handleSortByDate}
+        <button
+          onClick={handleSort}
           className="cursor-pointer duration-300 hover:text-green-300"
         >
           등록일순
-        </p>
-        <p
-          onClick={handleSortByPlayerCount}
+        </button>
+        <button
+          onClick={handleSort}
           className="cursor-pointer duration-300 hover:text-green-300"
         >
           참여인원순
-        </p>
+        </button>
       </div>
     </div>
   );
