@@ -1,6 +1,6 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { RoomResponse, lobbyApi } from "@/api/lobbyApi";
-import { OrderRequest } from "@/types/interfaces/lobbyInterface";
+import { lobbyApi } from "@/api/lobbyApi";
+import { OrderRequest, RoomResponse } from "@/types/interfaces/lobbyInterface";
 
 export const useLobby = (
   params: OrderRequest,
