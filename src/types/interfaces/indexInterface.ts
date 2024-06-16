@@ -1,12 +1,5 @@
 /* index 페이지 props 타입 */
-export interface TextImageProps {
-  title: string;
-  text: string;
-  image: string;
-  isTextLeft: boolean;
-}
-
-export interface ImageTextProps {
+export interface ContentProps {
   title: string;
   text: string;
   image: string;

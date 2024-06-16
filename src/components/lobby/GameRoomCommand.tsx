@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { GameRoomCommandProps } from "@/types/interfaces/lobbyInterface";
 import { useLobby } from "@/hooks/useLobby";
@@ -10,7 +10,7 @@ const GameRoomCommmand: React.FC<GameRoomCommandProps> = ({
   const [order, setOrder] = useState<"desc" | "asc">("desc");
   const [sortType, setSortType] = useState<"date" | "playerCount">("date");
 
-  const { data, error, isLoading } = useLobby({ order }, "rooms", sortType);
+  const { error, isLoading } = useLobby({ order }, "rooms", sortType);
 
   const handleSort = (e: React.MouseEvent<HTMLElement>) => {
     const type = e.currentTarget.dataset.sortType;

@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { ImageTextProps } from "@/types/interfaces/indexInterface";
+import { ContentProps } from "@/types/interfaces/indexInterface";
 
-const TextImage: React.FC<ImageTextProps> = ({ title, text, image }) => {
+const TextImage: React.FC<ContentProps> = ({ title, text, image }) => {
   return (
-    <div className="flex items-center justify-center font-bold pt-20 pb-20 space-x-32">
+    <div className="flex items-center justify-center space-x-32 pb-20 pt-20 font-bold">
       <Image
         src={image}
         alt="마피아게임"

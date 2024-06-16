@@ -1,18 +1,16 @@
 import { instanceWithToken } from "./axios";
 import {
   RoomRequest,
+  JoinRoomRequest,
   OrderRequest,
-  RoomResponseSuccess,
-  RoomResponseFail,
+  RoomResponse,
 } from "@/types/interfaces/lobbyInterface";
-
-export type RoomResponse = RoomResponseSuccess | RoomResponseFail;
 
 export const lobbyApi = {
   // 방 생성
-  createRoom: async (data: RoomRequest): Promise<RoomResponse> => {
+  createRoom: async (createRoomData: RoomRequest): Promise<RoomResponse> => {
     try {
-      const response = await instanceWithToken.post("/room", data);
+      const response = await instanceWithToken.post("/room", createRoomData);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -21,13 +19,27 @@ export const lobbyApi = {
   },
 
   // 모든 방 조회
-  getAllRooms: async (): Promise<RoomResponse[]> => {
+  getAllRooms: async (): Promise<RoomResponse> => {
     try {
       const response = await instanceWithToken.get("/room");
       return response.data;
     } catch (error) {
       console.error(error);
-      return [{ status: "error", message: "방 조회에 실패했습니다." }];
+      return { status: "error", message: "방 조회에 실패했습니다." };
+    }
+  },
+
+  // 방 참여
+  joinRoom: async (joinRoomData: JoinRoomRequest): Promise<RoomResponse> => {
+    try {
+      const response = await instanceWithToken.post(
+        `/room/${joinRoomData.roomId}/join`,
+        joinRoomData,
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return { status: "error", message: "방 참여에 실패했습니다." };
     }
   },
 

@@ -2,15 +2,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TextImageProps } from "@/types/interfaces/indexInterface";
+import { ContentProps } from "@/types/interfaces/indexInterface";
 
-const LastTextImage: React.FC<TextImageProps> = ({ title, text, image }) => {
+const LastTextImage: React.FC<ContentProps> = ({ title, text, image }) => {
   return (
-    <div className="flex items-center justify-center font-bold pt-20 pb-20 space-x-32">
+    <div className="flex items-center justify-center space-x-32 pb-20 pt-20 font-bold">
       <div>
         <div className="mb-4 text-4xl">{title}</div>
         <div className="text-lg">{text}</div>
-        <div className="pt-4 space-x-4">
+        <div className="space-x-4 pt-4">
           <Button variant="outline">
             <Link href="/rule">게임설명</Link>
           </Button>
